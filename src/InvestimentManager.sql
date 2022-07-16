@@ -29,7 +29,7 @@ CREATE TABLE compras (
         REFERENCES pessoas (id)
         ON DELETE CASCADE,
     FOREIGN KEY (codAtivo)
-        REFERENCES ativos (id)
+        REFERENCES ativos_disponiveis (id)
         ON DELETE CASCADE
 )  ENGINE=INNODB;
 
@@ -43,20 +43,22 @@ CREATE TABLE vendas (
         REFERENCES pessoas (id)
         ON DELETE CASCADE,
     FOREIGN KEY (CodAtivo)
-        REFERENCES ativos (id)
+        REFERENCES ativos_disponiveis (id)
         ON DELETE CASCADE
 )  ENGINE=INNODB;
 
 CREATE TABLE investimentos (
+    id INT NOT NULL auto_increment,
     CodCliente INT NOT NULL,
     CodAtivo INT NOT NULL,
 	QtdeAtivo INT NOT NULL,
     Valor BOOLEAN NOT NULL,
+    PRIMARY KEY(id),
     FOREIGN KEY (CodCliente)
         REFERENCES pessoas (id)
         ON DELETE CASCADE,
     FOREIGN KEY (CodAtivo)
-        REFERENCES ativos (id)
+        REFERENCES ativos_disponiveis (id)
         ON DELETE CASCADE
 )  ENGINE=INNODB;
 
@@ -67,7 +69,7 @@ CREATE TABLE hist_deposito (
     PRIMARY KEY(id),
     FOREIGN KEY (CodCliente)
         REFERENCES pessoas (id)
-        ON DELETE CASCADE,
+        ON DELETE CASCADE
 )  ENGINE=INNODB;
 
 CREATE TABLE hist_saque (
@@ -77,7 +79,7 @@ CREATE TABLE hist_saque (
     PRIMARY KEY(id),
     FOREIGN KEY (CodCliente)
         REFERENCES pessoas (id)
-        ON DELETE CASCADE,
+        ON DELETE CASCADE
 )  ENGINE=INNODB;
 
 SET SQL_SAFE_UPDATES = 0;
