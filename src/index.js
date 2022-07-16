@@ -1,11 +1,10 @@
 const express = require('express');
-// const routes = require('./routes');
-const comprasController = require('./controllers/compras.controller');
+const routes = require('./routes');
 
 const app = express();
 
 app.use(express.json());
-app.post('/investimentos/comprar', comprasController);
+app.use(routes);
 
 const PORT = 3000;
 

@@ -1,16 +1,11 @@
-// const { Router } = require('express');
+const express = require('express');
 const comprasService = require('../services/compras.service');
 
-// const comprasController = Router();
+const comprasController = express.Router();
 
-/* comprasController.post(async (req, res) => {
+comprasController.post('/', async (req, res) => {
   const response = await comprasService.addCompra(req.body);
   res.status(201).json(response);
-}); */
+});
 
-const comprasController2 = async (req, res) => {
-  const response = await comprasService.addCompra(req.body);
-  res.status(201).json(response);
-};
-
-module.exports = comprasController2;
+module.exports = comprasController;

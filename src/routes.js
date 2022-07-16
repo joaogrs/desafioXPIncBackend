@@ -1,7 +1,7 @@
-const { Router } = require('express');
+const express = require('express');
 const comprasController = require('./controllers/compras.controller');
 
-const routes = Router();
+const routes = express.Router();
 
 routes.use('/investimentos/comprar', comprasController);
 

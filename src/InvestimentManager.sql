@@ -15,7 +15,7 @@ CREATE TABLE ativos_disponiveis (
     id INT NOT NULL auto_increment,
     nome VARCHAR(30) NOT NULL,
     qtde INT NOT NULL,
-    valor BOOLEAN NOT NULL,
+    valor FLOAT NOT NULL,
     PRIMARY KEY(id)
 ) ENGINE=INNODB;
 
@@ -52,7 +52,7 @@ CREATE TABLE investimentos (
     CodCliente INT NOT NULL,
     CodAtivo INT NOT NULL,
 	QtdeAtivo INT NOT NULL,
-    Valor BOOLEAN NOT NULL,
+    Valor FLOAT NOT NULL,
     PRIMARY KEY(id),
     FOREIGN KEY (CodCliente)
         REFERENCES pessoas (id)
@@ -65,7 +65,7 @@ CREATE TABLE investimentos (
 CREATE TABLE hist_deposito (
     id INT NOT NULL auto_increment,
     CodCliente INT NOT NULL,
-    Valor BOOLEAN NOT NULL,
+    Valor FLOAT NOT NULL,
     PRIMARY KEY(id),
     FOREIGN KEY (CodCliente)
         REFERENCES pessoas (id)
@@ -75,7 +75,7 @@ CREATE TABLE hist_deposito (
 CREATE TABLE hist_saque (
     id INT NOT NULL auto_increment,
     CodCliente INT NOT NULL,
-    Valor BOOLEAN NOT NULL,
+    Valor FLOAT NOT NULL,
     PRIMARY KEY(id),
     FOREIGN KEY (CodCliente)
         REFERENCES pessoas (id)
