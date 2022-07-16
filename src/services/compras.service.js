@@ -1,9 +1,12 @@
-const ativosModel = require('../models/ativosDisponiveis.model');
 const comprasModel = require('../models/compras.model');
-const investimentosModel = require('../models/investimentos.model');
+const alteraInvestimento = require('../helpers/alteraInvestimento');
 
-const addCompra = async () => {
-
+const addCompra = async ({ codCliente, codAtivo, qtdeAtivo }) => {
+  await comprasModel.addCompra(codCliente, codAtivo, qtdeAtivo);
+  const valor = await alteraInvestimento(codCliente, codAtivo, qtdeAtivo);
+  return {
+    codCliente, codAtivo, qtdeAtivo, valor,
+  };
 };
 
 module.exports = { addCompra };
