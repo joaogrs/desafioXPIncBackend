@@ -5,4 +5,9 @@ const getByCodAtivo = (codAtivo) => connection.execute(
   [codAtivo],
 );
 
-module.exports = { getByCodAtivo };
+const updatePriceAtivo = (qtde, codAtivo) => connection.execute(
+  'UPDATE InvestimentManager.ativos_disponiveis SET qtde = ? WHERE id = ?',
+  [qtde, codAtivo],
+);
+
+module.exports = { getByCodAtivo, updatePriceAtivo };
