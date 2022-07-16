@@ -1,2 +1,2 @@
-.env
-.eslintrc.js
+*.env
+*.eslintrc.js
