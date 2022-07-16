@@ -17,10 +17,11 @@ const alteraInvestimentosCompra = async (codCliente, codAtivo, qtdeAtivo) => {
 
 const alteraInvestimentosVenda = async (codCliente, codAtivo, qtdeAtivo) => {
   const [[ativo]] = await ativosModel.getByCodAtivo(codAtivo);
-  const valor = ativo.valor * qtdeAtivo;
   const [investimento] = await investimentosModel.getByCodClienteAndCodAtivo(codCliente, codAtivo);
+  const valor = ativo.valor * qtdeAtivo;
   const newValor = investimento[0].Valor - valor;
   const newQtde = investimento[0].QtdeAtivo - qtdeAtivo;
+
   await investimentosModel.update(codCliente, codAtivo, newQtde, newValor);
   return { valor: newValor, qtdeAtivo: newQtde };
 };
