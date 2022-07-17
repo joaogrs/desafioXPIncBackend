@@ -4,11 +4,11 @@ CREATE DATABASE InvestimentManager;
 
 USE InvestimentManager;
 
-CREATE TABLE pessoas (
-    id INT NOT NULL auto_increment,
+CREATE TABLE clientes (
+    codCliente INT NOT NULL auto_increment,
     nome VARCHAR(30) NOT NULL,
-    saldo INT NOT NULL,
-    PRIMARY KEY(id)
+    saldo FLOAT NOT NULL,
+    PRIMARY KEY(codCliente)
 ) ENGINE=INNODB;
 
 CREATE TABLE ativos_disponiveis (
@@ -26,7 +26,7 @@ CREATE TABLE compras (
     qtdeAtivo INT NOT NULL,
 	PRIMARY KEY(id),
     FOREIGN KEY (codCliente)
-        REFERENCES pessoas (id)
+        REFERENCES clientes (codCliente)
         ON DELETE CASCADE,
     FOREIGN KEY (codAtivo)
         REFERENCES ativos_disponiveis (id)
@@ -40,7 +40,7 @@ CREATE TABLE vendas (
 	QtdeAtivo INT NOT NULL,
 	PRIMARY KEY(id),
     FOREIGN KEY (CodCliente)
-        REFERENCES pessoas (id)
+        REFERENCES clientes (codCliente)
         ON DELETE CASCADE,
     FOREIGN KEY (CodAtivo)
         REFERENCES ativos_disponiveis (id)
@@ -55,7 +55,7 @@ CREATE TABLE investimentos (
     Valor FLOAT NOT NULL,
     PRIMARY KEY(id),
     FOREIGN KEY (CodCliente)
-        REFERENCES pessoas (id)
+        REFERENCES clientes (codCliente)
         ON DELETE CASCADE,
     FOREIGN KEY (CodAtivo)
         REFERENCES ativos_disponiveis (id)
@@ -68,7 +68,7 @@ CREATE TABLE hist_deposito (
     Valor FLOAT NOT NULL,
     PRIMARY KEY(id),
     FOREIGN KEY (CodCliente)
-        REFERENCES pessoas (id)
+        REFERENCES clientes (codCliente)
         ON DELETE CASCADE
 )  ENGINE=INNODB;
 
@@ -78,7 +78,7 @@ CREATE TABLE hist_saque (
     Valor FLOAT NOT NULL,
     PRIMARY KEY(id),
     FOREIGN KEY (CodCliente)
-        REFERENCES pessoas (id)
+        REFERENCES clientes (codCliente)
         ON DELETE CASCADE
 )  ENGINE=INNODB;
 
