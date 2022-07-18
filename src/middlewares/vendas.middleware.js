@@ -6,7 +6,8 @@ const validateCamposVenda = async (req, res, next) => {
   const { codCliente, codAtivo, qtdeAtivo } = req.body;
 
   if (!codCliente || !codAtivo || !qtdeAtivo) return res.status(422).json({ message: 'Os campos codCliente, codAtivo, qtdeAtivo são obrigatórios' });
-  if (qtdeAtivo < 0 || qtdeAtivo === 0) return res.status(400).json({ message: 'Quantidade inválida' });
+  if ((qtdeAtivo < 0) || (qtdeAtivo === 0)) return res.status(400).json({ message: 'Quantidade inválida' });
+  if ((typeof codCliente !== 'number') || typeof codAtivo !== 'number' || typeof qtdeAtivo !== 'number') return res.status(400).json({ message: 'Os campos devem ser do tipo number' });
 
   const [[cliente]] = await clientesModel.getClienteByCod(codCliente);
   if (!cliente) return res.status(404).json({ message: 'Cliente não encontrado' });
