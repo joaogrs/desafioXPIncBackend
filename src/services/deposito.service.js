@@ -1,5 +1,5 @@
 const historicoDepositoModel = require('../models/historicoDeposito.model');
-const alteraSaldo = require('../helpers/alteraSaldo');
+const { alteraSaldo } = require('../helpers/alteraSaldo');
 
 const addDeposito = async ({ CodCliente, Valor }) => {
   await historicoDepositoModel.addDeposito(CodCliente, Valor);

@@ -1,4 +1,6 @@
 const ativosDisponiveisModel = require('../models/ativosDisponiveis.model');
+const ativosModel = require('../models/ativosDisponiveis.model');
+const clientesModel = require('../models/clientes.model');
 
 const validateAtivosDisponiveis = async (req, res, next) => {
   const { codAtivo, qtdeAtivo: qtdeCompra } = req.body;
@@ -13,4 +15,19 @@ const validateAtivosDisponiveis = async (req, res, next) => {
   return next();
 };
 
-module.exports = { validateAtivosDisponiveis };
+const validateSaldoConta = async (req, res, next) => {
+  const { codCliente, codAtivo, qtdeAtivo } = req.body;
+  const [[cliente]] = await clientesModel.getClienteByCod(codCliente);
+  const [[ativo]] = await ativosModel.getByCodAtivo(codAtivo);
+  const valor = ativo.valor * qtdeAtivo;
+  const newValorCarteira = cliente.saldo - valor;
+
+  if (newValorCarteira < 0) {
+    return res.status(422).json({ message: 'Valor não disponível na conta' });
+  }
+
+  await clientesModel.updateSaldoModel(codCliente, newValorCarteira);
+  return next();
+};
+
+module.exports = { validateAtivosDisponiveis, validateSaldoConta };

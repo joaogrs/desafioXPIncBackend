@@ -11,7 +11,7 @@ const routes = express.Router();
 
 routes.use('/investimentos/comprar', comprasController);
 routes.use('/investimentos/vender', vendasController);
-routes.use('/ativos/clientes', investimentosController);
+routes.use('/ativos/cliente', investimentosController);
 routes.use('/ativos', ativosDisponiveisController);
 routes.use('/conta/deposito', depositoController);
 routes.use('/conta/saque', saqueController);

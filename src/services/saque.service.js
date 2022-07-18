@@ -1,5 +1,5 @@
 const historicoSaqueModel = require('../models/historicoSaque.model');
-const alteraSaldo = require('../helpers/alteraSaldo');
+const { alteraSaldo } = require('../helpers/alteraSaldo');
 
 const addSaque = async ({ CodCliente, Valor }) => {
   await historicoSaqueModel.addSaque(CodCliente, Valor);
