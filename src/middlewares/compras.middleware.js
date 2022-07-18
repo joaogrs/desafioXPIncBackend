@@ -2,6 +2,13 @@ const ativosDisponiveisModel = require('../models/ativosDisponiveis.model');
 const ativosModel = require('../models/ativosDisponiveis.model');
 const clientesModel = require('../models/clientes.model');
 
+const validateCamposCompra = async (req, res, next) => {
+  const { codCliente, codAtivo, qtdeAtivo } = req.body;
+  if (!codCliente || !codAtivo || !qtdeAtivo) return res.status(422).json({ message: 'Os campos codCliente, codAtivo, qtdeAtivo são obrigatórios' });
+  if (qtdeAtivo < 0 || qtdeAtivo === 0) return res.status(400).json({ message: 'Quantidade inválida' });
+  return next();
+};
+
 const validateAtivosDisponiveis = async (req, res, next) => {
   const { codAtivo, qtdeAtivo: qtdeCompra } = req.body;
   const [[ativo]] = await ativosDisponiveisModel.getByCodAtivo(codAtivo);
@@ -30,4 +37,4 @@ const validateSaldoConta = async (req, res, next) => {
   return next();
 };
 
-module.exports = { validateAtivosDisponiveis, validateSaldoConta };
+module.exports = { validateAtivosDisponiveis, validateSaldoConta, validateCamposCompra };

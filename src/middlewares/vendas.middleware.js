@@ -1,6 +1,13 @@
 const investimentosModel = require('../models/investimentos.model');
 const ativosDisponiveisModel = require('../models/ativosDisponiveis.model');
 
+const validateCamposVenda = async (req, res, next) => {
+  const { codCliente, codAtivo, qtdeAtivo } = req.body;
+  if (!codCliente || !codAtivo || !qtdeAtivo) return res.status(422).json({ message: 'Os campos codCliente, codAtivo, qtdeAtivo são obrigatórios' });
+  if (qtdeAtivo < 0 || qtdeAtivo === 0) return res.status(400).json({ message: 'Quantidade inválida' });
+  return next();
+};
+
 const validateAtivosCarteira = async (req, res, next) => {
   const { codCliente, codAtivo, qtdeAtivo: qtdeVenda } = req.body;
   const [[carteira]] = await investimentosModel.getByCodClienteAndCodAtivo(codCliente, codAtivo);
@@ -15,4 +22,4 @@ const validateAtivosCarteira = async (req, res, next) => {
   return next();
 };
 
-module.exports = { validateAtivosCarteira };
+module.exports = { validateAtivosCarteira, validateCamposVenda };
