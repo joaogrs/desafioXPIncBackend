@@ -4,7 +4,7 @@ const { validateAtivosCarteira, validateCamposVenda } = require('../middlewares/
 
 const vendasController = express.Router();
 
-vendasController.post('/', validateAtivosCarteira, validateCamposVenda, async (req, res) => {
+vendasController.post('/', validateCamposVenda, validateAtivosCarteira, async (req, res) => {
   const response = await vendasService.addVenda(req.body);
   res.status(201).json(response);
 });
