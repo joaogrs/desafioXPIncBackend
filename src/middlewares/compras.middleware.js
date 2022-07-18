@@ -12,6 +12,9 @@ const validateCamposCompra = async (req, res, next) => {
 const validateAtivosDisponiveis = async (req, res, next) => {
   const { codAtivo, qtdeAtivo: qtdeCompra } = req.body;
   const [[ativo]] = await ativosDisponiveisModel.getByCodAtivo(codAtivo);
+
+  if (!ativo) return res.status(404).json({ message: 'Ativo não disponível' });
+
   const newQtde = ativo.qtde - qtdeCompra;
 
   if (newQtde < 0) {
@@ -25,6 +28,9 @@ const validateAtivosDisponiveis = async (req, res, next) => {
 const validateSaldoConta = async (req, res, next) => {
   const { codCliente, codAtivo, qtdeAtivo } = req.body;
   const [[cliente]] = await clientesModel.getClienteByCod(codCliente);
+
+  if (!cliente) return res.status(404).json({ message: 'Cliente não encontrado' });
+
   const [[ativo]] = await ativosModel.getByCodAtivo(codAtivo);
   const valor = ativo.valor * qtdeAtivo;
   const newValorCarteira = cliente.saldo - valor;
