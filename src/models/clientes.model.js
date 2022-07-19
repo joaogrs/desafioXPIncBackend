@@ -4,4 +4,6 @@ const updateSaldoModel = (codCliente, valor) => connection.execute('UPDATE Inves
 
 const getClienteByCod = (codCliente) => connection.execute('SELECT codCliente, saldo FROM InvestimentManager.clientes WHERE codCliente = ?', [codCliente]);
 
-module.exports = { updateSaldoModel, getClienteByCod };
+const getClienteByUserAndPassword = (username, password) => connection.execute('SELECT * FROM InvestimentManager.clientes WHERE username = ? AND password = ?', [username, password]);
+
+module.exports = { updateSaldoModel, getClienteByCod, getClienteByUserAndPassword };

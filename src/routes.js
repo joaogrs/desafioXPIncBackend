@@ -6,6 +6,7 @@ const ativosDisponiveisController = require('./controllers/ativosDisponiveis.con
 const depositoController = require('./controllers/deposito.controller');
 const saqueController = require('./controllers/saque.controller');
 const clientesController = require('./controllers/clientes.controller');
+const authController = require('./controllers/auth.controller');
 
 const routes = express.Router();
 
@@ -16,5 +17,6 @@ routes.use('/ativos', ativosDisponiveisController);
 routes.use('/conta/deposito', depositoController);
 routes.use('/conta/saque', saqueController);
 routes.use('/conta', clientesController);
+routes.use('/auth', authController);
 
 module.exports = routes;

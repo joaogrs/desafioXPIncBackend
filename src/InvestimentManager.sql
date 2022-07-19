@@ -6,8 +6,9 @@ USE InvestimentManager;
 
 CREATE TABLE clientes (
     codCliente INT NOT NULL auto_increment,
-    nome VARCHAR(30) NOT NULL,
     saldo FLOAT NOT NULL,
+    username VARCHAR(30) NOT NULL,
+    password VARCHAR(30) NOT NULL,
     PRIMARY KEY(codCliente)
 ) ENGINE=INNODB;
 
