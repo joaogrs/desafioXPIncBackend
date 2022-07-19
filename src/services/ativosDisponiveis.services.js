@@ -6,4 +6,9 @@ const getByCodAtivo = async (codAtivo) => {
   return { CodAtivo: id, QtdeAtivo: qtde, Valor: valor };
 };
 
-module.exports = { getByCodAtivo };
+const getAllAtivos = async () => {
+  const [ativos] = await ativosDisponiveisModel.getAllAtivos();
+  return ativos;
+};
+
+module.exports = { getByCodAtivo, getAllAtivos };

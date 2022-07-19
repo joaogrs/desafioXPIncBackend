@@ -9,4 +9,9 @@ ativosDisponiveisController.get('/:cod', async (req, res) => {
   res.status(200).json(response);
 });
 
+ativosDisponiveisController.get('/', async (req, res) => {
+  const response = await ativosDisponiveisService.getAllAtivos();
+  res.status(200).json(response);
+});
+
 module.exports = ativosDisponiveisController;
