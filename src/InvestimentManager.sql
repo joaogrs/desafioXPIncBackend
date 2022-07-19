@@ -15,7 +15,7 @@ CREATE TABLE clientes (
 CREATE TABLE ativos_disponiveis (
     id INT NOT NULL auto_increment,
     nome VARCHAR(30) NOT NULL,
-    qtde INT NOT NULL,
+    qtdeAtivo INT NOT NULL,
     valor FLOAT NOT NULL,
     PRIMARY KEY(id)
 ) ENGINE=INNODB;
@@ -84,3 +84,18 @@ CREATE TABLE hist_saque (
 )  ENGINE=INNODB;
 
 SET SQL_SAFE_UPDATES = 0;
+
+INSERT INTO InvestimentManager.ativos_disponiveis (nome, qtdeAtivo, valor) VALUES
+    ("XPIN", 1340985, 16.94),
+    ("XPED", 50430, 5.75),
+    ("RICO", 1203945, 9.60),
+    ("TRYB", 13407, 10.39),
+    ("GOOG", 50430948, 40.84),
+    ("MTP4", 1203945, 23.93),
+    ("SEF3", 103244, 3.40),
+    ("META", 132394, 50.98),
+    ("PTR4", 102938495, 28.60),
+    ("ITU4", 3294329, 22.85),
+    ("UNM3", 312432, 14.57),
+    ("PATX", 10, 3.1),
+    ("VSPO", 0, 10);
