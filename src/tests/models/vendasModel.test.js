@@ -3,7 +3,7 @@ const { expect } = require('chai');
 const connection = require('../../db/investimentManager');
 const vendasModel = require('../../models/vendas.model');
 
-describe('Insere uma nova compra no banco de dados', () => {
+describe('Insere uma nova venda no banco de dados', () => {
   describe('quando é inserido com sucesso', async () => {
     const payloadVenda = {
       codCliente: 1,
