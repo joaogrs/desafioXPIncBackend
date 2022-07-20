@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-expressions */
 const sinon = require('sinon');
 const { expect } = require('chai');
-const connection = require('../../db/investimentManager');
-const ativosDisponiveisModel = require('../../models/ativosDisponiveis.model');
+const connection = require('../../src/db/investimentManager');
+const ativosDisponiveisModel = require('../../src/models/ativosDisponiveis.model');
 
 describe('Busca um ativo pelo código', () => {
   const codAtivo = 1;

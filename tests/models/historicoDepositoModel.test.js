@@ -1,11 +1,11 @@
 const sinon = require('sinon');
 const { expect } = require('chai');
-const connection = require('../../db/investimentManager');
-const historicoSaqueModel = require('../../models/historicoSaque.model');
+const connection = require('../../src/db/investimentManager');
+const historicoDepositoModel = require('../../src/models/historicoDeposito.model');
 
-describe('Insere os dados de um novo saque no histórico', () => {
+describe('Insere os dados de um novo depósito no histórico', () => {
   describe('quando é inserido com sucesso', async () => {
-    const payloadSaque = {
+    const payloadDeposito = {
       codCliente: 1,
       Valor: 10.50,
     };
@@ -21,13 +21,13 @@ describe('Insere os dados de um novo saque no histórico', () => {
     });
 
     it('retorna um objeto', async () => {
-      const [response] = await historicoSaqueModel.addSaque(payloadSaque);
+      const [response] = await historicoDepositoModel.addDeposito(payloadDeposito);
 
       expect(response).to.be.a('object');
     });
 
     it('o objeto possui a quantidade de linhas afetadas', async () => {
-      const [response] = await historicoSaqueModel.addSaque(payloadSaque);
+      const [response] = await historicoDepositoModel.addDeposito(payloadDeposito);
 
       expect(response).to.have.a.property('affectedRows');
     });

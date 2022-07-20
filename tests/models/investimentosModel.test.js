@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-expressions */
 const sinon = require('sinon');
 const { expect } = require('chai');
-const connection = require('../../db/investimentManager');
-const investimentosModel = require('../../models/investimentos.model');
+const connection = require('../../src/db/investimentManager');
+const investimentosModel = require('../../src/models/investimentos.model');
 
 describe('Busca todos os investimentos de determinado cliente', () => {
   describe('Quando não existe o investimento ', () => {

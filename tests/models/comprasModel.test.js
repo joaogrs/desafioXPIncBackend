@@ -1,11 +1,11 @@
 const sinon = require('sinon');
 const { expect } = require('chai');
-const connection = require('../../db/investimentManager');
-const vendasModel = require('../../models/vendas.model');
+const connection = require('../../src/db/investimentManager');
+const comprasModel = require('../../src/models/compras.model');
 
-describe('Insere uma nova venda no banco de dados', () => {
+describe('Insere uma nova compra no banco de dados', () => {
   describe('quando é inserido com sucesso', async () => {
-    const payloadVenda = {
+    const payloadCompra = {
       codCliente: 1,
       codAtivo: 1,
       qtdeAtivo: 2,
@@ -22,13 +22,13 @@ describe('Insere uma nova venda no banco de dados', () => {
     });
 
     it('retorna um objeto', async () => {
-      const [response] = await vendasModel.addVenda(payloadVenda);
+      const [response] = await comprasModel.addCompra(payloadCompra);
 
       expect(response).to.be.a('object');
     });
 
     it('o objeto possui a quantidade de linhas afetadas', async () => {
-      const [response] = await vendasModel.addVenda(payloadVenda);
+      const [response] = await comprasModel.addCompra(payloadCompra);
 
       expect(response).to.have.a.property('affectedRows');
     });

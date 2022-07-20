@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-expressions */
 const sinon = require('sinon');
 const { expect } = require('chai');
-const connection = require('../../db/investimentManager');
-const clientesModel = require('../../models/clientes.model');
+const connection = require('../../src/db/investimentManager');
+const clientesModel = require('../../src/models/clientes.model');
 
 describe('Atualiza o saldo do cliente', () => {
   const codCliente = 1;
