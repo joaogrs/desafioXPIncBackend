@@ -98,7 +98,7 @@ describe('Busca um investimento pelo código do cliente e pelo código do ativo'
   describe('Quando a busca é realizada com sucesso', async () => {
     const codCliente = 1;
     const codAtivo = 1;
-    const ativo = {
+    const investimento = {
       CodCliente: 1,
       CodAtivo: 1,
       QtdeAtivo: 5,
@@ -106,7 +106,7 @@ describe('Busca um investimento pelo código do cliente e pelo código do ativo'
     };
 
     before(() => {
-      sinon.stub(connection, 'execute').resolves([[ativo]]);
+      sinon.stub(connection, 'execute').resolves([[investimento]]);
     });
 
     after(() => {
