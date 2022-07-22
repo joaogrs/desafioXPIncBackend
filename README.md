@@ -22,10 +22,10 @@ Aqui você vai encontrar o passo a passo de como rodar o projeto além de alguns
   3. Crie um arquivo .env na raiz do projeto
   - Ele deve conter as seguintes informações: 
    - MYSQL_HOST= ( O seu host )
-     MYSQL_USER= (Seu usuário do MYSQL)
-     MYSQL_PASSWORD= (Sua senha do MYSQL)
-     MYSQL_DATABASE= InvestimentManager
-     PORT= (Em qual porta a aplicação vai rodar)
+   - MYSQL_USER= (Seu usuário do MYSQL)
+   - MYSQL_PASSWORD= (Sua senha do MYSQL)
+   - MYSQL_DATABASE= InvestimentManager
+   - PORT= (Em qual porta a aplicação vai rodar)
      
   4. Faça a criação do banco dentro do MYSql
   - Na raiz do projeto existe um arquivo InvestimentManager.Sql
