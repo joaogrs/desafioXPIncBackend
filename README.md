@@ -145,6 +145,14 @@ Aqui você vai encontrar o passo a passo de como rodar o projeto além de alguns
       ("UNM3", 312432, 14.57),
       ("PATX", 10, 3.1),
       ("VSPO", 0, 10);
+  INSERT INTO InvestimentManager.clientes(codCliente, saldo, username, password) VALUES
+      (1, 2000, "joaogrs", "senha1234");
+
+  INSERT INTO InvestimentManager.investimentos(CodCliente, CodAtivo, QtdeAtivo, Valor) VALUES
+      (1, 2, 3, 17.25),
+      (1, 4, 7, 72.73),
+      (1, 7, 1, 3.4),
+      (1, 10, 3, 68.55);
 ```
 </details>
 
