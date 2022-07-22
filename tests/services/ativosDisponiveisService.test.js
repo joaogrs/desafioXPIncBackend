@@ -57,7 +57,7 @@ describe('Busca todos os ativos no DB', () => {
     });
 
     it('o array possui itens do tipo objeto', async () => {
-      const item = await ativosDisponiveisService.getAllAtivos();
+      const [item] = await ativosDisponiveisService.getAllAtivos();
 
       expect(item).to.be.an('object');
     });
