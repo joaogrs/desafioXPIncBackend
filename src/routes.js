@@ -7,6 +7,7 @@ const depositoController = require('./controllers/deposito.controller');
 const saqueController = require('./controllers/saque.controller');
 const clientesController = require('./controllers/clientes.controller');
 const authController = require('./controllers/auth.controller');
+const authMiddleware = require('./middlewares/auth.middleware');
 
 const routes = express.Router();
 
@@ -238,7 +239,7 @@ const routes = express.Router();
  *                  qtdeAtivo: 2
  *                  valor: 20.50
  */
-routes.use('/investimentos/comprar', comprasController);
+routes.use('/investimentos/comprar', authMiddleware, comprasController);
 /**
  * @swagger
  *  /investimentos/vender:

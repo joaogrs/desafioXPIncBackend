@@ -3,7 +3,7 @@ const ativosModel = require('../models/ativosDisponiveis.model');
 
 const alteraSaldo = async (codCliente, Valor, Tipo) => {
   const [[cliente]] = await clientesModel.getClienteByCod(codCliente);
-  const newValor = Tipo === 'deposito' ? cliente.saldo + Valor : cliente.saldo - Valor;
+  const newValor = Tipo === 'deposito' ? parseFloat(cliente.saldo) + Valor : parseFloat(cliente.saldo) - Valor;
   await clientesModel.updateSaldoModel(codCliente, newValor);
   return { codCliente, nome: cliente.nome, valor: newValor };
 };
@@ -11,8 +11,8 @@ const alteraSaldo = async (codCliente, Valor, Tipo) => {
 const alteraSaldoVenda = async (codCliente, codAtivo, qtdeAtivo) => {
   const [[cliente]] = await clientesModel.getClienteByCod(codCliente);
   const [[ativo]] = await ativosModel.getByCodAtivo(codAtivo);
-  const valor = ativo.valor * qtdeAtivo;
-  const newValorCarteira = cliente.saldo + valor;
+  const valor = parseFloat(ativo.valor) * qtdeAtivo;
+  const newValorCarteira = parseFloat(cliente.saldo) + valor;
 
   return clientesModel.updateSaldoModel(codCliente, newValorCarteira);
 };

@@ -7,7 +7,6 @@ const authenticate = async ({ username, password }) => {
   }
 
   const [clienteLogin] = await clienteModel.getClienteByUserAndPassword(username, password);
-  console.log(clienteLogin);
 
   if (clienteLogin.length === 0) {
     return { status: 400, message: { message: 'Usuário ou senha inválido' } };

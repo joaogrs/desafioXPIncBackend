@@ -6,7 +6,7 @@ USE InvestimentManager;
 
 CREATE TABLE clientes (
     codCliente INT NOT NULL auto_increment,
-    saldo FLOAT NOT NULL,
+    saldo DECIMAL(8,2) NOT NULL,
     username VARCHAR(30) NOT NULL,
     password VARCHAR(30) NOT NULL,
     PRIMARY KEY(codCliente)
@@ -16,7 +16,7 @@ CREATE TABLE ativos_disponiveis (
     id INT NOT NULL auto_increment,
     nome VARCHAR(30) NOT NULL,
     qtdeAtivo INT NOT NULL,
-    valor DOUBLE NOT NULL,
+    valor DECIMAL(8,2) NOT NULL,
     PRIMARY KEY(id)
 ) ENGINE=INNODB;
 
@@ -53,7 +53,7 @@ CREATE TABLE investimentos (
     CodCliente INT NOT NULL,
     CodAtivo INT NOT NULL,
 	QtdeAtivo INT NOT NULL,
-    Valor DOUBLE NOT NULL,
+    Valor DECIMAL(8,2) NOT NULL,
     PRIMARY KEY(id),
     FOREIGN KEY (CodCliente)
         REFERENCES clientes (codCliente)
@@ -66,7 +66,7 @@ CREATE TABLE investimentos (
 CREATE TABLE hist_deposito (
     id INT NOT NULL auto_increment,
     CodCliente INT NOT NULL,
-    Valor DOUBLE NOT NULL,
+    Valor DECIMAL(8,2) NOT NULL,
     PRIMARY KEY(id),
     FOREIGN KEY (CodCliente)
         REFERENCES clientes (codCliente)
@@ -76,7 +76,7 @@ CREATE TABLE hist_deposito (
 CREATE TABLE hist_saque (
     id INT NOT NULL auto_increment,
     CodCliente INT NOT NULL,
-    Valor DOUBLE NOT NULL,
+    Valor DECIMAL(8,2) NOT NULL,
     PRIMARY KEY(id),
     FOREIGN KEY (CodCliente)
         REFERENCES clientes (codCliente)

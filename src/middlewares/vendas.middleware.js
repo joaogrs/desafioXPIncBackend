@@ -20,11 +20,11 @@ const validateAtivosCarteira = async (req, res, next) => {
   const [[carteira]] = await investimentosModel.getByCodClienteAndCodAtivo(codCliente, codAtivo);
   if (!carteira) return res.status(404).json({ message: 'Ativo não disponível na carteira' });
 
-  const newQtdeCarteira = carteira.QtdeAtivo - qtdeVenda;
+  const newQtdeCarteira = parseFloat(carteira.QtdeAtivo) - parseFloat(qtdeVenda);
   if (newQtdeCarteira < 0) return res.status(422).json({ message: 'Quantidade de ações não disponível na carteira' });
 
   const [[ativo]] = await ativosDisponiveisModel.getByCodAtivo(codAtivo);
-  const newQtdeAtivo = ativo.qtde + qtdeVenda;
+  const newQtdeAtivo = parseFloat(ativo.qtdeAtivo) + parseFloat(qtdeVenda);
   await ativosDisponiveisModel.updateQtdeAtivo(newQtdeAtivo, codAtivo);
   return next();
 };

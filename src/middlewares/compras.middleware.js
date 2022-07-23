@@ -16,7 +16,7 @@ const validateAtivosDisponiveis = async (req, res, next) => {
 
   if (!ativo) return res.status(404).json({ message: 'Ativo não disponível' });
 
-  const newQtde = ativo.qtde - qtdeCompra;
+  const newQtde = parseFloat(ativo.qtdeAtivo) - parseFloat(qtdeCompra);
 
   if (newQtde < 0) {
     return res.status(422).json({ message: 'Quantidade de ações não disponível para compra' });

@@ -52,7 +52,7 @@ Aqui você vai encontrar o passo a passo de como rodar o projeto além de alguns
 
   CREATE TABLE clientes (
       codCliente INT NOT NULL auto_increment,
-      saldo FLOAT NOT NULL,
+      saldo DOUBLE NOT NULL,
       username VARCHAR(30) NOT NULL,
       password VARCHAR(30) NOT NULL,
       PRIMARY KEY(codCliente)
