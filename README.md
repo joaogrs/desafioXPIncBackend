@@ -20,12 +20,12 @@ Aqui você vai encontrar o passo a passo de como rodar o projeto além de alguns
   - `npm install`
 
   3. Crie um arquivo .env na raiz do projeto
-  - Ele deve conter as seguintes informações: 
-   - MYSQL_HOST= ( O seu host )
-   - MYSQL_USER= (Seu usuário do MYSQL)
-   - MYSQL_PASSWORD= (Sua senha do MYSQL)
-   - MYSQL_DATABASE= InvestimentManager
-   - PORT= (Em qual porta a aplicação vai rodar)
+    - Ele deve conter as seguintes informações: 
+      - MYSQL_HOST= ( O seu host )
+      - MYSQL_USER= (Seu usuário do MYSQL)
+      - MYSQL_PASSWORD= (Sua senha do MYSQL)
+      - MYSQL_DATABASE= InvestimentManager
+      - PORT= (Em qual porta a aplicação vai rodar)
      
   4. Faça a criação do banco dentro do MYSql
   - Na raiz do projeto existe um arquivo InvestimentManager.Sql
@@ -161,6 +161,9 @@ INSERT INTO InvestimentManager.investimentos(CodCliente, CodAtivo, QtdeAtivo, Va
   <summary><strong>📁 Documentação e Rotas Disponíveis</strong></summary><br />
   
   A documentação contendo todas as rotas e a estrutura do banco foi feita com a utilização do Swagger.
+
+  <img src="/imgs/swagger1.png" alt="primeira imagem swagger"/>
+  <img src="./imgs/swagger2.png" alt="segunda imagem swagger"/>
   
   Na raiz do projeto também contém uma pasta imgs com um print de todas as rotas. 
   
@@ -176,7 +179,7 @@ INSERT INTO InvestimentManager.investimentos(CodCliente, CodAtivo, QtdeAtivo, Va
 <details>
   <summary><strong>🛠 Desafios enfrentados</strong></summary><br />
   
-  O primeiro desafio que encontrei na realização do case foi a decisão de quais técnologias usar. Decidi por utilizar express com javascript sem o uso de ORM. Foi uma  decisão tomada pensando em priorizar as funcionalidades da API ao invés de adicionar uma complexidade no código que poderia atrasar o desenvolvimento da aplicação e dos requisitos bonûs que eu também queria realizar. 
+  O primeiro desafio que encontrei na realização do case foi a decisão de quais técnologias usar. Decidi por utilizar express com javascript sem o uso de ORM. Foi uma  decisão tomada pensando em priorizar as funcionalidades da API ao invés de adicionar uma complexidade no código que poderia atrasar o desenvolvimento da aplicação e dos requisitos bônus que eu também queria realizar. 
 
 Após isso, pensar a estrutura do banco de dados também foi um processo desafiador. O primeiro passo foi construir um diagrama de entidade relacionamento a mão para entender quais eram os campos necessários e como as tabelas iam conversar entre si. A maior dificuldade aqui foi entender como o post de compras e vendas iam alterar as tabelas. A solução dada foi criar tabelas de histórico de compra e venda, onde o post insere os dados, e uma terceira tabela de carteira de investimentos, onde ficam as quantidades e valor total de investimentos de cada cliente. Caso seja a primeira vez que um cliente está comprando determinado ativo é feita uma inserção na carteira. Caso ele já possua o ativo, é atualizada a quantidade e o valor total ao comprar ou vender um ativo. A estrutura de saque e depósito é parecida, porém alterando o saldo em uma tabela de clientes.
 
@@ -186,9 +189,9 @@ A partir daí o desenvolvimento correu de forma mais tranquila já que eu tinha 
 
 Depois disso, optei por realizar o máximo de validações possíveis (campos faltantes, valores negativos, tipos errados, etc) utilizando middlewares. Apesar de ter um bom conhecimento na lib joi, que testa os campos automaticamente, preferi fazer as validações a mão já que eram relativamente simples.
 
-Com as validações feitas, comecei a implementação do JWT com uma rota extra de login (usuário, senha) onde é retornado o token. Depois disso foi só adicionar um middleware de validação de token nas rotas que eram necessárias. Nesse mesmo dia foram preenchidos os ativos disponiveis para o front, além de uma rota GET que retorna tais ativos.
+Com as validações feitas, comecei a implementação do JWT com uma rota extra de login (usuário, senha) onde é retornado o token. Após isso, foi só adicionar um middleware de validação de token nas rotas que eram necessárias. Nesse mesmo dia foram preenchidos os ativos disponiveis para o front, além de uma rota GET que retorna tais ativos.
 
-Em seguida foi dado inicio aos testes unitários divididos por camada MSC, a implementação do Swagger, criação desse README.
+Em seguida foi dado inicio aos testes unitários divididos por camada MSC, a implementação do Swagger além da criação desse README.
 </details>
 
 <details>
@@ -204,6 +207,7 @@ Em seguida foi dado inicio aos testes unitários divididos por camada MSC, a imp
   - Chai
   - Eslint
   - MySql
-  - Bcrypto
   
 </details>
+
+Qualquer dúvida é só entrar em contato comigo pelo email <a>jgabrielrodrigues15@gmail.com</a>! ;)
