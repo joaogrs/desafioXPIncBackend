@@ -41,7 +41,7 @@ Aqui você vai encontrar o passo a passo de como rodar o projeto além de alguns
 <details>
   <summary><strong>🪑 Tabelas</strong></summary><br />
   
-  O banco terá 7 tabelas. clientes, compras, vendas, investimentos, his_deposito, hist_saque, ativos_disponiveis
+  O banco tem 7 tabelas. clientes, compras, vendas, investimentos, his_deposito, hist_saque, ativos_disponiveis
   
   ```sql
 DROP DATABASE IF EXISTS InvestimentManager;
@@ -171,7 +171,21 @@ INSERT INTO InvestimentManager.investimentos(CodCliente, CodAtivo, QtdeAtivo, Va
     - `npm start`
   
   2. Entre na rota do Swagger UI
-    - /docs
+    - `/docs`
+</details>
+
+<details>
+  <summary><strong>🔒 Autenticação JWT</strong></summary><br />
+
+  Grande parte das rotas necessitam de uma verificação JWT. É possível ver quais são nas imagens da sessão de Swagger (Contém o cadeado ao lado da rota).
+
+  1. Entre na rota de autenticação
+    - `/auth`
+
+  2. Coloque um usuário válido no body
+    - `{ "username: joaogrs", "password: senha123 }"`
+
+  3. Copie o token retornado e use-o como a authorization das rotas
 </details>
 
 # Sobre o Desenvolvimento e Desafios Enfrentados
