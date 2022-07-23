@@ -183,7 +183,7 @@ INSERT INTO InvestimentManager.investimentos(CodCliente, CodAtivo, QtdeAtivo, Va
     - `/auth`
 
   2. Coloque um usuário válido no body
-    - `{ "username: joaogrs", "password: senha123 }"`
+    - `{ "username": "joaogrs", "password: senha123" }`
 
   3. Copie o token retornado e use-o como a authorization das rotas
 </details>

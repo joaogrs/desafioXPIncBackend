@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const swaggerConfig = {
   definition: {
     openapi: '3.0.1',
@@ -7,7 +9,7 @@ const swaggerConfig = {
       version: '1.0',
     },
     servers: [{
-      url: 'http://localhost:3000',
+      url: `http://localhost:${process.env.PORT}`,
       description: 'servidor local',
     }],
     components: {
