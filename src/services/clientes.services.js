@@ -1,3 +1,4 @@
+const { hash } = require('bcrypt');
 const clientesModel = require('../models/clientes.model');
 
 const getClienteByCod = async (codAtivo) => {
@@ -5,4 +6,10 @@ const getClienteByCod = async (codAtivo) => {
   return cliente;
 };
 
-module.exports = { getClienteByCod };
+const addCliente = async ({ username, password }) => {
+  if (!username || !password) return false;
+  const passwordHash = await hash(password, 8);
+  return clientesModel.addCliente(username, passwordHash);
+};
+
+module.exports = { getClienteByCod, addCliente };

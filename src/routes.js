@@ -211,6 +211,8 @@ const routes = express.Router();
  *    post:
  *      tags: [Investimentos]
  *      description: Endpoint faz o post na tabela de compras
+ *      security:
+ *        - bearerAuth: []
  *      requestBody:
  *        required: true
  *        content:
@@ -246,6 +248,8 @@ routes.use('/investimentos/comprar', authMiddleware, comprasController);
  *    post:
  *      tags: [Investimentos]
  *      description: Endpoint faz o post na tabela de vendas
+ *      security:
+ *        - bearerAuth: []
  *      requestBody:
  *        required: true
  *        content:
@@ -281,6 +285,8 @@ routes.use('/investimentos/vender', vendasController);
  *    get:
  *      tags: [Investimentos]
  *      description: Endpoint faz o get de todos ativos de determinado cliente
+ *      security:
+ *        - bearerAuth: []
  *      parameters:
  *      - in: path
  *        name: cod
@@ -341,6 +347,34 @@ routes.use('/ativos/cliente', investimentosController);
  *                  QtdeAtivo: 2
  *                  Valor: 20.50
  */
+
+/**
+ * @swagger
+ *  /ativos:
+ *    get:
+ *      tags: [Investimentos]
+ *      description: Endpoint faz o get de todos os ativos da corretora
+ *      responses:
+ *        200:
+ *          content:
+ *            aplication/json:
+ *              schema:
+ *                type: array
+ *                items:
+ *                  nome:
+ *                    type: string
+ *                  qtdeAtivo:
+ *                    type: integer
+ *                  valor:
+ *                    type: number
+ *                example:
+ *                  - nome: XPIN
+ *                    qtdeAtivo: 12342
+ *                    valor: 20.50
+ *                  - nome: XPED
+ *                    qtdeAtivo: 193424
+ *                    valor: 6.89
+ */
 routes.use('/ativos', ativosDisponiveisController);
 /**
  * @swagger
@@ -348,6 +382,8 @@ routes.use('/ativos', ativosDisponiveisController);
  *    post:
  *      tags: [Conta]
  *      description: Endpoint faz o deposito na conta de determinado cliente
+ *      security:
+ *        - bearerAuth: []
  *      requestBody:
  *        required: true
  *        content:
@@ -381,6 +417,8 @@ routes.use('/conta/deposito', depositoController);
  *    post:
  *      tags: [Conta]
  *      description: Endpoint faz o saque na conta de determinado cliente
+ *      security:
+ *        - bearerAuth: []
  *      requestBody:
  *        required: true
  *        content:
@@ -414,6 +452,8 @@ routes.use('/conta/saque', saqueController);
  *    get:
  *      tags: [Conta]
  *      description: Endpoint faz o get de determinado cliente
+ *      security:
+ *        - bearerAuth: []
  *      parameters:
  *      - in: path
  *        name: cod
@@ -435,33 +475,6 @@ routes.use('/conta/saque', saqueController);
  *                  Saldo: 120.50
  */
 
-/**
- * @swagger
- *  /ativos:
- *    get:
- *      tags: [Investimentos]
- *      description: Endpoint faz o get de todos os ativos da corretora
- *      responses:
- *        200:
- *          content:
- *            aplication/json:
- *              schema:
- *                type: array
- *                items:
- *                  nome:
- *                    type: string
- *                  qtdeAtivo:
- *                    type: integer
- *                  valor:
- *                    type: number
- *                example:
- *                  - nome: XPIN
- *                    qtdeAtivo: 12342
- *                    valor: 20.50
- *                  - nome: XPED
- *                    qtdeAtivo: 193424
- *                    valor: 6.89
- */
 routes.use('/conta', clientesController);
 /**
  * @swagger

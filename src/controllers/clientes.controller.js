@@ -9,4 +9,10 @@ clientesController.get('/:cod', async (req, res) => {
   res.status(200).json(response);
 });
 
+clientesController.post('/registro', async (req, res) => {
+  const test = await clientesService.addCliente(req.body);
+  if (!test) return res.status(400).json({ message: 'Campos faltantes' });
+  return res.status(201).json({ message: 'Cliente registrado com sucesso' });
+});
+
 module.exports = clientesController;

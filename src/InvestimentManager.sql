@@ -8,7 +8,7 @@ CREATE TABLE clientes (
     codCliente INT NOT NULL auto_increment,
     saldo DECIMAL(8,2) NOT NULL,
     username VARCHAR(30) NOT NULL,
-    password VARCHAR(30) NOT NULL,
+    password VARCHAR(80) NOT NULL,
     PRIMARY KEY(codCliente)
 ) ENGINE=INNODB;
 
