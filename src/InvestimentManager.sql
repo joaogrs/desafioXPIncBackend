@@ -101,7 +101,7 @@ INSERT INTO InvestimentManager.ativos_disponiveis (nome, qtdeAtivo, valor) VALUE
     ("VSPO", 0, 10);
 
 INSERT INTO InvestimentManager.clientes(codCliente, saldo, username, password) VALUES
-    (1, 2000, "joaogrs", "senha1234");
+    (1, 2000, "joaogrs", "senha123");
 
 INSERT INTO InvestimentManager.investimentos(CodCliente, CodAtivo, QtdeAtivo, Valor) VALUES
     (1, 2, 3, 17.25),

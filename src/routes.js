@@ -278,7 +278,7 @@ routes.use('/investimentos/comprar', authMiddleware, comprasController);
  *                  qtdeAtivo: 2
  *                  valor: 20.50
  */
-routes.use('/investimentos/vender', vendasController);
+routes.use('/investimentos/vender', authMiddleware, vendasController);
 /**
  * @swagger
  *  /ativos/cliente/{cod}:
@@ -317,7 +317,7 @@ routes.use('/investimentos/vender', vendasController);
  *                  QtdeAtivo: 2
  *                  Valor: 35.70
  */
-routes.use('/ativos/cliente', investimentosController);
+routes.use('/ativos/cliente', authMiddleware, investimentosController);
 /**
  * @swagger
  *  /ativos/{cod}:
@@ -410,7 +410,7 @@ routes.use('/ativos', ativosDisponiveisController);
  *                  codCliente: 1
  *                  valor: 20.50
  */
-routes.use('/conta/deposito', depositoController);
+routes.use('/conta/deposito', authMiddleware, depositoController);
 /**
  * @swagger
  *  /conta/saque:
@@ -445,7 +445,7 @@ routes.use('/conta/deposito', depositoController);
  *                  codCliente: 1
  *                  valor: 20.50
  */
-routes.use('/conta/saque', saqueController);
+routes.use('/conta/saque', authMiddleware, saqueController);
 /**
  * @swagger
  *  /conta/{cod}:

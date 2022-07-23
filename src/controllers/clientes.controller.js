@@ -1,9 +1,10 @@
 const express = require('express');
 const clientesService = require('../services/clientes.services');
+const authMiddleware = require('../middlewares/auth.middleware');
 
 const clientesController = express.Router();
 
-clientesController.get('/:cod', async (req, res) => {
+clientesController.get('/:cod', authMiddleware, async (req, res) => {
   const { cod } = req.params;
   const response = await clientesService.getClienteByCod(cod);
   res.status(200).json(response);
