@@ -475,6 +475,36 @@ routes.use('/conta/saque', saqueController);
  *                  Saldo: 120.50
  */
 
+/**
+ * @swagger
+ *  /conta/registro:
+ *    post:
+ *      tags: [Conta]
+ *      description: Endpoint faz o post de um novo cliente
+ *      requestBody:
+ *        required: true
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              properties:
+ *                username:
+ *                  type: string
+ *                password:
+ *                  type: string
+ *      responses:
+ *        201:
+ *          content:
+ *            aplication/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                  message:
+ *                    type: string
+ *                example:
+ *                  message: "Cliente cadastrado com sucesso"
+ */
+
 routes.use('/conta', clientesController);
 /**
  * @swagger
